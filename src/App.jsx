@@ -41,7 +41,7 @@ export default function App() {
   const getQuestions = async (topic) => {
     setLoading(true);
     try {
-      const res = await axios.post('http://localhost:5000/api/generate-questions', { topic });
+      const res = await axios.post('https://preguntados-back-eight.vercel.app/api/generate-questions', { topic });
       setSelectedTopic(topic);
       // Procesar preguntas
       const parsed = parseQuestions(res.data.questions);
@@ -66,7 +66,7 @@ export default function App() {
     });
     setScore(correct);
     try {
-      await axios.post('http://localhost:5000/api/save-quiz', {
+      await axios.post('https://preguntados-back-eight.vercel.app/api/save-quiz', {
         topic: selectedTopic,
         questions: questions.map(q => q.text),
         score: correct,
